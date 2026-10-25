@@ -63,6 +63,43 @@ The project was deployed in a private VMware laboratory environment using a sing
 
 The original technical report contains implementation screenshots and test evidence. A reviewed public version may be published after correcting the backup/recovery wording and removing any potentially sensitive authentication, configuration, or assessment information.
 
+## Implementation evidence
+
+Selected screenshots were captured in the JURUS Level 1 Analyst VMware laboratory. Authentication hashes and identifiable account labels have been redacted from the published copies.
+
+### UFW initial firewall baseline
+
+The baseline screenshot shows an active default-deny inbound policy with SSH (22/tcp) allowed. This is **not** evidence of the later HTTP/HTTPS firewall configuration.
+
+![Initial UFW policy](screenshots/01_ufw_initial_ssh_policy.jpg)
+
+### MariaDB security
+
+MariaDB is bound to `127.0.0.1:3306`, with a dedicated `nextcloud_app@localhost` user scoped to `nextcloud_db`. The authentication hash has been redacted.
+
+![MariaDB localhost binding and scoped grants](screenshots/02_mariadb_localhost_redacted.jpg)
+
+### Nextcloud access-control examples
+
+The lab portal shows research and student account views of research collaboration folders. Screenshots document interface and folder visibility, **not by themselves a comprehensive permission test**.
+
+![Researcher portal view](screenshots/03_nextcloud_researcher_redacted.jpg)
+
+![Postgraduate student portal view](screenshots/04_nextcloud_student_redacted.jpg)
+
+### SSH monitoring with Fail2Ban
+
+The first screenshot shows an enabled SSH jail alongside an invalid-user authentication event in the SSH journal. The counters show failed attempts but **zero currently banned addresses**, so this demonstrates detection/logging rather than a successful ban.
+
+![Fail2Ban and controlled invalid SSH login](screenshots/05_fail2ban_ssh_event.jpg)
+
+A separate initial status screenshot recorded zero failed and zero banned addresses.
+
+![Fail2Ban initial status](screenshots/06_fail2ban_initial_status.jpg)
+
+> These images are evidence from a private lab environment, not proof of a production-grade deployment.
+
+
 ## Lessons learned
 
 The project strengthened my practical understanding of Linux administration, secure service configuration, least-privilege access, security validation, and the important distinction between **having a backup**, **validating backup data**, and **recovering an entire working service**.
