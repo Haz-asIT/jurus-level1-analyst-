@@ -12,6 +12,12 @@ This project demonstrates the deployment and security hardening of a university 
 
 The portal supports user and group management, controlled research-document sharing, collaboration requests, and announcements.
 
+## System Architecture
+
+![JURUS University Research Collaboration Portal Architecture](JURUS_Architecture_UniPortal.png)
+
+The project was deployed in a private VMware laboratory environment using a single Ubuntu Server virtual machine.
+
 ## Technology stack
 
 - **Infrastructure:** VMware Workstation, Ubuntu Server, VMnet8 NAT
